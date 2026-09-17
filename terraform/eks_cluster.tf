@@ -9,4 +9,10 @@ module "eks_cluster" {
 
   auto_scale_options   = var.auto_scale_options
   nodes_instance_types = var.nodes_instance_types
+  nodes_config         = var.nodes_config
+
+  # custom_node = {
+  #   name      = "custom"
+  #   file_path = "${path.cwd}/assets/user-data.tpl"
+  # }
 }

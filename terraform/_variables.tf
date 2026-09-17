@@ -21,3 +21,7 @@ variable "auto_scale_options" {
 variable "nodes_instance_types" {
   type = any
 }
+
+variable "nodes_config" {
+  type = any
+}
