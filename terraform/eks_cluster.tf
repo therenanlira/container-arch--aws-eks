@@ -11,6 +11,10 @@ module "eks_cluster" {
   nodes_instance_types = var.nodes_instance_types
   nodes_config         = var.nodes_config
 
+  fargate_services = [
+    "chip"
+  ]
+
   # custom_node = {
   #   name      = "custom"
   #   file_path = "${path.cwd}/assets/user-data.tpl"
