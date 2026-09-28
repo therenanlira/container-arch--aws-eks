@@ -66,3 +66,33 @@ nodes_config = [
   #   severity      = "soft"
   # }
 ]
+
+# Karpenter
+karpenter = [
+  {
+    name = "critical"
+    labels = {
+      workload = "etc"
+    }
+    ami_family           = "AL2023"
+    consolidation_policy = "WhenEmptyOrUnderutilized"
+    consolidate_after    = "2m"
+    instance_families    = ["c7i-flex", "m7i-flex"] # conta Free plan: só tipos free-tier eligible
+    capacity_types       = ["spot"]
+    instance_sizes       = ["large"]
+    # zones = ["us-east-2a", "us-east-2b"] # opcional; padrão = AZs das subnets do EKS
+  },
+  {
+    name = "general"
+    labels = {
+      workload = "etc"
+    }
+    ami_family           = "Bottlerocket"
+    consolidation_policy = "WhenEmptyOrUnderutilized"
+    consolidate_after    = "2m"
+    instance_families    = ["c7i-flex", "m7i-flex"] # conta Free plan: só tipos free-tier eligible
+    capacity_types       = ["spot"]
+    instance_sizes       = ["large"]
+    # zones = ["us-east-2a", "us-east-2b"] # opcional; padrão = AZs das subnets do EKS
+  }
+]

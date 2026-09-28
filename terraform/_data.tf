@@ -19,3 +19,8 @@ data "http" "my_public_ip" {
 data "aws_eks_cluster_auth" "default" {
   name = module.eks_cluster.name
 }
+
+data "aws_ssm_parameter" "karpenter_ami" {
+  count = length(var.karpenter)
+  name  = local.karpenter_ami_ssm_paths[var.karpenter[count.index].ami_family]
+}
